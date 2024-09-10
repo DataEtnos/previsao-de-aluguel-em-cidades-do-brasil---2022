@@ -57,6 +57,12 @@ HistGradientBoosting Regressor:
 
 
 
+
+
+![previsão x reais](https://github.com/user-attachments/assets/1225e6c7-64c8-45d7-82ae-e0f1ac2522fc)
+
+
+
 O melhor modelo escolhido para predição de preço neste dataframe é o Ada boosting :
 Gradient Boosting Regressor:
 •	R² (treino): 99.80%
