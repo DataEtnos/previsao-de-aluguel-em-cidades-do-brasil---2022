@@ -1,33 +1,48 @@
-# PREVIÇÕES DE ALUGUEL , MODELOS DE MACHINE LEARNING
-Treino de previsões 
+Objetivo :  Previsão do valor do aluguel  em 4 cidades do brasil 
+
+
+este é um data frame do Kaggle : https://www.kaggle.com/code/juniorbueno/brazilian-houses-rent-various-regressions
+
+
+Neste projeto vou fazer a predição do valor do aluguel em 4 cidades do Brasil , retirei do data frame o símbolo de cifrão que estava nas features com valores monetários, então meu data frame ficou desta forma .
+entendendo um pouco dos dados : 
+ 
+
+Fiz uma verificação dos dados para verificar o tipo de dado que temos como tipo e se temos dados nulos :
+ 
+
+Neste data frame não temos dados nulos , deixarei as categorias como object , depois disso fiz algumas analises diretamente no dataframe. 
+
+primeiro verifiquei qual cidade tem o total, entenda total como o valor de todas as despesas para alugar um apartamento , não somente o aluguel   mais caro : 
+ sendo São Paulo e Belo Horizonte as cidades mais caras. 
+Agora comparando o quanto a mobília impacta no valor do aluguel: 
+ 
+O valor do aluguel aumenta praticamente R$ 1.500 a mais se ele é mobiliado.
+
+Depois fiz uma contagem de valores que são outliers (outliers são valores em um conjunto de dados que se distanciam significativamente da maioria dos outros pontos.) para não alterar os dados do primeiro data frame após fazer a limpeza dos outliers.
+criei um segundo data frame.
+Ficamos assim depois que tratarei os outliers: 
+Tudo pronto para os treinos dos modelos , treinei 4 modelos e dei 2 tunning  no modelos e ficamos assim. 
+3 dos modelos infelizmente deu  overfitting , mostrando as métricas : 
+
+Gradient Boosting Regressor:
+•	R² (treino): 99.80%
+•	MAE: 3.59%
+•	MSE: 454.50%
+Random Forest Regressor:
+•	R² (treino): 99.33%
+•	MAE: 6.41%
+•	MSE: 1477.87%
+
+HistGradientBoosting Regressor:
+•	R² (teste): 99.85%
+•	MAE: 2.48%
+•	MSE: 162.89%
 
 
 
-
-
----
-
-**Explorando o Mercado de Aluguéis com Dados Reais: Um Novo Projeto!**
-
-Olá, pessoal!
-
-Estou empolgado em compartilhar meu mais recente projeto de análise de dados! Utilizando um dataset do Kaggle, explorei a previsão de preços de aluguel em cinco cidades brasileiras: São Paulo, Belo Horizonte, Campinas, Porto Alegre e Rio de Janeiro.
-
-**O que explorei:**
-- **Entendimento dos Dados:** Realizei uma análise detalhada das colunas, melhorei a nomenclatura para facilitar a manipulação e confirmei que não havia valores nulos. Fiz uma análise descritiva para entender estatísticas básicas, como média, quartis e valores extremos.
-
-- **Análise de Aluguel:** Descobri que São Paulo e Belo Horizonte têm os aluguéis totais mais altos. A relação entre o número de vagas de estacionamento e o valor total do aluguel mostrou que manter até duas vagas pode ser vantajoso. 
-
-- **Insights Interessantes:** São Paulo tem o aluguel mais caro, com valores podendo ultrapassar R$ 4.000, seguido por Belo Horizonte, com um máximo de R$ 3.500. Analisei outliers usando gráficos Boxplot e identifiquei que, embora eles influenciem as estatísticas, não devem ser descartados sem uma análise cuidadosa.
-
-- **Modelagem e Previsões:** Utilizei `df.query()` para agrupar dados e criei um gráfico de correlação para entender melhor as relações entre variáveis. Por exemplo, o valor total do aluguel tem uma forte correlação com o valor do seguro de incêndio e o número de banheiros. 
-
-**Modelos de Machine Learning:**
-Treinei três modelos para previsões de aluguel:
-- **Gradient Boosting:** R² = 99,36%
-- **Random Forest:** R² = 99,85%
-- **AdaBoost:** R² = 96,79%
-
-Todos os modelos mostraram desempenho impressionante, mas o **AdaBoost** se destacou por sua capacidade de evitar exageros, refletindo um R² de 96% que oferece uma avaliação mais equilibrada e realista.
-
-**Conclusão:** A variável mais impactante para o valor do aluguel é o seguro de incêndio. A abordagem com AdaBoost foi a mais eficaz, oferecendo uma perspectiva equilibrada sem superestimar o desempenho do modelo.
+O melhor modelo escolhido para predição de preço neste dataframe é o Ada boosting :
+Gradient Boosting Regressor:
+•	R² (treino): 99.80%
+•	MAE: 3.59%
+•	MSE: 454.50%
